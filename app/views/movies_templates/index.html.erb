@@ -29,18 +29,33 @@
   
 <% @list_of_movies.each do |a_thing|%>
   <tr>
-    <td><%= a_thing.id%></td>
+    <td>
+      <%= a_thing.id%>
+    </td>
+    
     <td>
       <img src="http://robohash.org/<%= a_thing.image%>">
     </td>
-    <td><%= a_thing.title%></td>
-    <td><%= a_thing.year%></td>
-     <td> 
-     <%= a_thing.director_id%></td>
+    
     <td>
-    <a href ="/movies/<%= a_thing.id%>">
+      <%= a_thing.title%>
+    </td>
+    
+    <td>
+      <%= a_thing.year%>
+    </td>
+    
+    <td> 
+      <% a_thing.director_id%>
+      <%= Director.where({ :id => a_thing.director_id }).at(0).name%>
+
+
+    </td>
+    
+    <td>
+        <a href ="/movies/<%= a_thing.id%>">
       Show details
-     </a> 
+        </a> 
     </td>
     
     
